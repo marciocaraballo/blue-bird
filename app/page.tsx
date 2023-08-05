@@ -32,7 +32,7 @@ export default async function Home() {
   })) ?? [];
 
   return (
-    <div className='w-full max-w-xl mx-auto'>
+    <>
       <div className='flex justify-between px-4 py-6 border border-gray-800 border-t-0'>
         <h1 className='text-xl font-bold text-gray-400'>Home</h1>
         <AuthButtonServer/>
@@ -40,6 +40,6 @@ export default async function Home() {
       <NewTweet user={session.user}/>
       <Tweets tweets={tweets} user={session.user}/>
       <Analytics />
-    </div>
+    </>
   )
 }

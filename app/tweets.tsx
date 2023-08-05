@@ -5,6 +5,7 @@ import Likes from "./likes";
 import { useEffect, experimental_useOptimistic as useOptimistic } from "react";
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
+import CommentsLink from "./commentsLink";
 
 export default function Tweets({ tweets, user }: { tweets: TweetWithAuthor[], user: User}) {
 
@@ -71,6 +72,7 @@ export default function Tweets({ tweets, user }: { tweets: TweetWithAuthor[], us
                     </p>
                     <p className="text-gray-400">{tweet.title}</p>
                     <Likes tweet={tweet} addOptimisticTweet={addOptimisticTweet}/>
+                    <CommentsLink tweet={tweet}/>
                 </div>
                 {
                     (user.id === tweet.author.id) ?

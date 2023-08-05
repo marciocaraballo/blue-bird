@@ -13,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='bg-none bg-gray-900 min-h-screen flex'>{children}</body>
+      <body className='bg-none bg-gray-900 min-h-screen flex'>
+        <div className='w-full max-w-xl mx-auto'>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
