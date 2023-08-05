@@ -13,6 +13,7 @@ App allows
 
 - Listing created tweets by authenticated users (through Github auth)
 - Tweets creation
+- [In progress] Comments by tweet 
 
 Site: 
 
