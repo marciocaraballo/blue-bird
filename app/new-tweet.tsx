@@ -31,7 +31,7 @@ export default function NewTweet({ user }: { user: User }) {
                         height={48}/>
                 </div>
                 <input 
-                    className="bg-inherit flex-1 ml-2 text-2xl leading-loose placeholder-gray-500 px-2" 
+                    className="bg-inherit flex-1 ml-2 text-2xl leading-loose placeholder-gray-500 px-2 text-gray-400" 
                     type="text" 
                     name="title"
                     placeholder="What is happening?!" />
