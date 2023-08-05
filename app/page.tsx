@@ -38,7 +38,7 @@ export default async function Home() {
         <AuthButtonServer/>
       </div>     
       <NewTweet user={session.user}/>
-      <Tweets tweets={tweets}/>
+      <Tweets tweets={tweets} user={session.user}/>
       <Analytics />
     </div>
   )

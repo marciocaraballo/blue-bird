@@ -2,6 +2,7 @@
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Image from 'next/image';
+import getURL from "../getUrl";
 
 export default function GithubButton () {
 
@@ -11,7 +12,7 @@ export default function GithubButton () {
         await supabase.auth.signInWithOAuth({
             provider: 'github',
             options: {
-                redirectTo: `${location.origin}/auth/callback`
+                redirectTo: `${getURL()}/auth/callback`
             }
         });
      }
