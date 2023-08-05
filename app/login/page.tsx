@@ -15,9 +15,9 @@ export default async function Login() {
     }
 
     return (
-        <div className="flex flex-1 justify-center items-center flex-col">
+        <main className="h-full flex flex-1 justify-center items-center flex-col">
             <h1 className="text-2xl text-gray-400 mb-3">Blue Bird App</h1>
             <GithubButton/>
-        </div>
+        </main>
     );
 }
