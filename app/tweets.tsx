@@ -54,7 +54,8 @@ export default function Tweets({ tweets }: { tweets: TweetWithAuthor[]}) {
             <div className="ml-4">
                 <p>
                     <span className="font-bold text-gray-400">{tweet.author.name}</span>
-                    <span className="text-sm ml-2 text-gray-400">{tweet.author.username}</span>
+                    <span className="text-sm ml-2 text-gray-400">@{tweet.author.username}</span>
+                    <span className="text-gray-400 text-sm ml-2">{new Date(tweet.created_at).toLocaleString()}</span>
                 </p>
                 <p className="text-gray-400">{tweet.title}</p>
                 <Likes tweet={tweet} addOptimisticTweet={addOptimisticTweet}/>
