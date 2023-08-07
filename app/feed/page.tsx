@@ -1,9 +1,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 import NewTweet from '../new-tweet';
 import Tweets from '../tweets';
-import { Analytics } from '@vercel/analytics/react';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,9 +10,7 @@ export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data: { session }} = await supabase.auth.getSession();
 
-  if (!session) {
-    redirect('/login');
-  }
+  if (!session) return null;
 
   const { data } = await supabase
     .from('tweets')
@@ -34,7 +30,6 @@ export default async function Home() {
     <>    
       <NewTweet user={session.user}/>
       <Tweets tweets={tweets} user={session.user}/>
-      <Analytics />
     </>
   )
 }
