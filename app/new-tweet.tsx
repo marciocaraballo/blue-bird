@@ -20,11 +20,10 @@ export default function NewTweet({ user }: { user: User }) {
     }
 
     return (
-        <form className="border border-gray-800 border-t-0" action={addTweet}>
-            <MessageBox
-                name="title" 
-                placeholder="What is happening?!" 
-                avatarUrl={user.user_metadata.avatar_url}/>
-        </form>
+        <MessageBox
+            action={addTweet}
+            name="title" 
+            placeholder="What is happening?!" 
+            avatarUrl={user.user_metadata.avatar_url}/>
     );
 }
