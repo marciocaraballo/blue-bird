@@ -1,9 +1,8 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers';
-import AuthButtonServer from './auth-button-server';
 import { redirect } from 'next/navigation';
-import NewTweet from './new-tweet';
-import Tweets from './tweets';
+import NewTweet from '../new-tweet';
+import Tweets from '../tweets';
 import { Analytics } from '@vercel/analytics/react';
 
 export const dynamic = 'force-dynamic';
@@ -32,11 +31,7 @@ export default async function Home() {
   })) ?? [];
 
   return (
-    <>
-      <div className='flex justify-between px-4 py-6 border border-gray-800 border-t-0'>
-        <h1 className='text-xl font-bold text-gray-400'>Home</h1>
-        <AuthButtonServer/>
-      </div>     
+    <>    
       <NewTweet user={session.user}/>
       <Tweets tweets={tweets} user={session.user}/>
       <Analytics />
