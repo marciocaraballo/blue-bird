@@ -66,8 +66,10 @@ export default function Tweets({ tweets, user }: { tweets: TweetWithAuthor[], us
                         <span className="text-gray-400 text-sm ml-2">{new Date(tweet.created_at).toLocaleString()}</span>
                     </p>
                     <p className="text-gray-400 break-all w-[400px]">{tweet.title}</p>
-                    <Likes tweet={tweet} addOptimisticTweet={addOptimisticTweet}/>
-                    <CommentsLink tweet={tweet}/>
+                    <div className="flex flex-1 items-center mt-2">
+                        <Likes tweet={tweet} addOptimisticTweet={addOptimisticTweet}/>
+                        <CommentsLink tweet={tweet}/>
+                    </div>
                 </div>
                 {
                     (user.id === tweet.author.id) ?
