@@ -6,6 +6,7 @@ import { useEffect, experimental_useOptimistic as useOptimistic } from "react";
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import CommentsLink from "./commentsLink";
+import getURL from "./getUrl";
 
 export default function Tweets({ tweets, user }: { tweets: TweetWithAuthor[], user: User}) {
 
@@ -25,15 +26,9 @@ export default function Tweets({ tweets, user }: { tweets: TweetWithAuthor[], us
     const supabase = createClientComponentClient(); 
 
     const handleDelete = async (tweet: TweetWithAuthor) => {
-        const supabase = createClientComponentClient<Database>();
-
-        await supabase
-            .from('tweets')
-            .delete()
-            .match({
-                user_id: tweet.author.id,
-                id: tweet.id
-            })
+        await fetch(`${getURL()}/api/tweet/${tweet.id}`, {
+            method: 'DELETE'
+        });
     }
     
     useEffect(() => {
