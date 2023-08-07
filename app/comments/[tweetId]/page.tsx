@@ -24,7 +24,10 @@ export default async function Page({ params: { tweetId }} : { params: { tweetId:
   return (
     <section>
       <div>
-        <MessageBox placeholder="Say something!" avatarUrl={session.user.user_metadata.avatar_url}/>
+        <MessageBox
+          name="comment" 
+          placeholder="Say something!" 
+          avatarUrl={session.user.user_metadata.avatar_url}/>
       </div>
     </section>
   )

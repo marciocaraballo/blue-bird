@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 export default function MessageBox(
-    { avatarUrl, placeholder }: 
-    { readonly avatarUrl: string, readonly placeholder: string }
+    { avatarUrl, placeholder, name }: 
+    { readonly avatarUrl: string, readonly placeholder: string, readonly name: string }
 ) {
     return (
         <div className="flex py-8 px-4">
@@ -14,10 +14,9 @@ export default function MessageBox(
                     width={48}
                     height={48}/>
             </div>
-            <input 
+            <input
                 className="bg-inherit flex-1 ml-2 text-2xl leading-loose placeholder-gray-500 px-2 text-gray-400" 
-                type="text" 
-                name="title"
+                name={name}
                 placeholder={placeholder} />
         </div>
     );
