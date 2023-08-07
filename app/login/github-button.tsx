@@ -1,29 +1,32 @@
 'use client'
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import Image from 'next/image';
-import getURL from "../getUrl";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import Image from 'next/image'
+import getURL from '../getUrl'
 
-export default function GithubButton () {
-
-    const supabase = createClientComponentClient<Database>();
+export default function GithubButton() {
+    const supabase = createClientComponentClient<Database>()
 
     const handleSignIn = async () => {
         await supabase.auth.signInWithOAuth({
             provider: 'github',
             options: {
-                redirectTo: `${getURL()}/auth/callback`
-            }
-        });
-     }
+                redirectTo: `${getURL()}/auth/callback`,
+            },
+        })
+    }
 
     return (
-        <button onClick={handleSignIn} className="hover:bg-gray-800 p-8 rounded-xl">
-            <Image 
-                src="/github-mark-white.png" 
+        <button
+            onClick={handleSignIn}
+            className="hover:bg-gray-800 p-8 rounded-xl"
+        >
+            <Image
+                src="/github-mark-white.png"
                 alt="Github Logo"
                 width={100}
-                height={100}/>
+                height={100}
+            />
         </button>
-    );
+    )
 }
