@@ -26,7 +26,7 @@ export default function Tweets({ tweets, user }: { tweets: TweetWithAuthor[], us
     const supabase = createClientComponentClient(); 
 
     const handleDelete = async (tweet: TweetWithAuthor) => {
-        await fetch(`${getURL()}/api/tweet/${tweet.id}`, {
+        await fetch(`${getURL()}/tweet/${tweet.id}`, {
             method: 'DELETE'
         });
     }
