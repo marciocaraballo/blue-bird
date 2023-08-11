@@ -32,8 +32,6 @@ export default async function Page({
         .select('*')
         .eq('tweet_id', tweetId)
 
-    console.log(commentsData)
-
     if (tweetData === null) return <p>Tweet not found</p>
 
     const tweet: TweetWithAuthor = {
@@ -58,8 +56,8 @@ export default async function Page({
     return (
         <section>
             <Tweets tweets={[tweet]} user={session.user} />
-            <Comments comments={comments} />
             <NewComment user={session.user} tweetId={tweetId} />
+            <Comments comments={comments} />
         </section>
     )
 }

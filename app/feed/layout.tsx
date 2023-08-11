@@ -3,6 +3,7 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import LogoutButton from './logoutButton'
 import { Analytics } from '@vercel/analytics/react'
+import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
@@ -23,7 +24,11 @@ export default async function Layout({
     return (
         <>
             <div className="flex justify-between px-4 py-6 border border-gray-800 border-t-0">
-                <h1 className="text-xl font-bold text-gray-400">Home</h1>
+                <Link 
+                    className="text-gray-400 ml-2"
+                    href={`/feed`}>
+                    <h1 className="text-xl font-bold text-gray-400">Home</h1>
+                </Link>
                 <LogoutButton />
             </div>
             {children}
