@@ -2,6 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import NewTweet from './newTweet'
 import Tweets from './tweets'
+import StaticMessage from '../components/StaticMessage'
 
 export const dynamic = 'force-dynamic'
 
@@ -36,6 +37,7 @@ export default async function Home() {
     return (
         <>
             <NewTweet user={session.user} />
+            <StaticMessage message="Timeline" />
             <Tweets tweets={tweets} user={session.user} />
         </>
     )

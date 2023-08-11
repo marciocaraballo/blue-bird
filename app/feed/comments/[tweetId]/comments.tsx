@@ -7,7 +7,7 @@ import {
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Comment from '../../../components/Comment'
-import EmptyMessage from '@/app/components/EmptyMessage'
+import StaticMessage from '@/app/components/StaticMessage'
 
 export default function Comments({
     comments,
@@ -39,10 +39,15 @@ export default function Comments({
     }, [supabase, router])
 
     if (comments === null || comments?.length === 0) {
-        return (<EmptyMessage message="No comments yet, be the first!"/>);
-    } 
+        return <StaticMessage message="No comments yet, be the first!" />
+    }
 
-    return comments.map((comment) => {
-        return <Comment key={comment.id} comment={comment} />
-    })
+    return (
+        <section>
+            <StaticMessage message="Thread" />
+            {comments.map((comment) => {
+                return <Comment key={comment.id} comment={comment} />
+            })}
+        </section>
+    )
 }
