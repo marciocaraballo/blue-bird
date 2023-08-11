@@ -13,7 +13,7 @@ export default function LogoutButton() {
     }
 
     return (
-        <button className="text-xs text-gray-400" onClick={handleSignOut}>
+        <button className="text-s text-gray-400" onClick={handleSignOut}>
             Logout
         </button>
     )
