@@ -37,7 +37,7 @@ export default async function Home() {
     return (
         <>
             <NewTweet user={session.user} />
-            <div className='sticky top-0'>
+            <div className='sticky top-[61px] bg-gray-900'>
                 <StaticMessage message="Timeline" />
             </div>
             <Tweets tweets={tweets} user={session.user} />

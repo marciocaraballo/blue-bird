@@ -17,7 +17,7 @@ export default function Comments({
 
     return (
         <section>
-            <div className='sticky top-0'>
+            <div className='sticky top-[61px] bg-gray-900'>
                 <StaticMessage message="Thread" />
             </div>
             {comments.map((comment) => {
