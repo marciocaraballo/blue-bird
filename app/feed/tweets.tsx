@@ -1,8 +1,6 @@
 'use client'
 
-import {
-    User
-} from '@supabase/auth-helpers-nextjs'
+import { User } from '@supabase/auth-helpers-nextjs'
 import { experimental_useOptimistic as useOptimistic } from 'react'
 import getURL from '../getUrl'
 import Tweet from '../components/Tweet'
@@ -33,7 +31,7 @@ export default function Tweets({
         })
     }
 
-    useRealtime('realtime tweets', 'tweets');
+    useRealtime('realtime tweets', 'tweets')
 
     return optimisticTweets.map((tweet) => {
         return (

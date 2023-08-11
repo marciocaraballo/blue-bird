@@ -34,7 +34,7 @@ export default function Tweet({
                         @{tweet.author.username}
                     </span>
                     <span className="text-gray-400 text-sm ml-2">
-                        <DateTime createdAt={tweet.created_at}/>
+                        <DateTime createdAt={tweet.created_at} />
                     </span>
                 </p>
                 <p className="text-gray-400 break-all w-[400px]">

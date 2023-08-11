@@ -9,8 +9,7 @@ export default function Comments({
 }: {
     comments: TweetCommentWithAuthor[] | null
 }) {
-
-    useRealtime('realtime comments', 'comments');
+    useRealtime('realtime comments', 'comments')
 
     if (comments === null || comments?.length === 0) {
         return <StaticMessage message="No comments yet, be the first!" />

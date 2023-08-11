@@ -26,7 +26,7 @@ export default function Comment({
                         @{comment.author.username}
                     </span>
                     <span className="text-gray-400 text-sm ml-2">
-                        <DateTime createdAt={comment.created_at}/>
+                        <DateTime createdAt={comment.created_at} />
                     </span>
                 </p>
                 <p className="text-gray-400 break-all w-[400px]">
