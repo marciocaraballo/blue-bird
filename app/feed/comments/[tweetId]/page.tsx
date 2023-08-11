@@ -23,7 +23,7 @@ export default async function Page({
 
     const { data: tweetData } = await supabase
         .from('tweets')
-        .select('*, author: profiles(*), likes(user_id), comments(user_id)')
+        .select('*, author: profiles(*), likes(user_id), comments(tweet_id)')
         .eq('id', tweetId)
         .single()
 
@@ -43,6 +43,7 @@ export default async function Page({
             (like) => like.user_id === session.user.id
         ),
         likes: tweetData.likes.length,
+        comments: tweetData.comments.length
     }
 
     const comments: TweetCommentWithAuthor[] =
