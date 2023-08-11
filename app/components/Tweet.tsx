@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Likes from '../feed/likes'
 import CommentsLink from '../commentsLink'
+import DateTime from './DateTime'
 
 export default function Tweet({
     tweet,
@@ -33,7 +34,7 @@ export default function Tweet({
                         @{tweet.author.username}
                     </span>
                     <span className="text-gray-400 text-sm ml-2">
-                        {new Date(tweet.created_at).toLocaleString()}
+                        <DateTime createdAt={tweet.created_at}/>
                     </span>
                 </p>
                 <p className="text-gray-400 break-all w-[400px]">
