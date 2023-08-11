@@ -23,7 +23,7 @@ export default function Tweet({
                     src={tweet.author.avatar_url}
                     width={48}
                     height={48}
-                    alt="tweet user avatar"
+                    alt="Tweet creator user avatar image, as given by Github profile"
                 />
             </div>
             <div className="ml-4">

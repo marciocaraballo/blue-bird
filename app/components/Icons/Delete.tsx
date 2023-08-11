@@ -1,7 +1,7 @@
 export default function Delete({
     className
 }: {
-    readonly className: string
+    readonly className?: string
 }) {
     return (
         <svg
@@ -10,7 +10,7 @@ export default function Delete({
             height="20"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1"
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
