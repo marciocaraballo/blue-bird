@@ -31,6 +31,14 @@ export default async function Page({
 
     if (tweetData === null) return <EmptyMessage message="Tweet not found" />
 
+    const { data: commentsData } = await supabase
+        .from('comments')
+        .select('*')
+        .eq('tweet_id', tweetId)
+        .order('created_at', {
+            ascending: false,
+        })
+
     const tweet: TweetWithAuthor = {
         ...tweetData,
         author: Array.isArray(tweetData.author)
@@ -44,7 +52,7 @@ export default async function Page({
     }
 
     const comments: TweetCommentWithAuthor[] =
-        tweetData.comments.map((comment) => ({
+        commentsData?.map((comment) => ({
             ...comment,
             author: Array.isArray(tweetData.author)
                 ? tweetData.author[0]
