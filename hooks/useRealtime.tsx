@@ -8,13 +8,13 @@ export default function useRealtime(channelName: string, tableName: string) {
 
     useEffect(() => {
         const channel = supabase
-            .channel('realtime tweets')
+            .channel(channelName)
             .on(
                 'postgres_changes',
                 {
                     event: '*',
                     schema: 'public',
-                    table: 'tweets',
+                    table: tableName,
                 },
                 (payload) => {
                     router.refresh()
@@ -25,5 +25,5 @@ export default function useRealtime(channelName: string, tableName: string) {
         return () => {
             supabase.removeChannel(channel)
         }
-    }, [supabase, router])
+    }, [supabase, router, channelName, tableName])
 }
