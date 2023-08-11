@@ -17,7 +17,9 @@ export default function Comments({
 
     return (
         <section>
-            <StaticMessage message="Thread" />
+            <div className='sticky top-0'>
+                <StaticMessage message="Thread" />
+            </div>
             {comments.map((comment) => {
                 return <Comment key={comment.id} comment={comment} />
             })}

@@ -23,7 +23,7 @@ export default async function Layout({
 
     return (
         <>
-            <div className="flex justify-between px-4 py-4 border border-gray-800 border-t-0">
+            <div className="flex justify-between px-4 py-4 border border-gray-800 border-t-0 bg-gray-900 sticky top-0">
                 <Link className="text-gray-400 ml-2" href={`/feed`}>
                     <h1 className="text-xl font-bold text-gray-400">Home</h1>
                 </Link>
