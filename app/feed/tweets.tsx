@@ -1,13 +1,12 @@
 'use client'
 
 import {
-    User,
-    createClientComponentClient,
+    User
 } from '@supabase/auth-helpers-nextjs'
-import { useEffect, experimental_useOptimistic as useOptimistic } from 'react'
-import { useRouter } from 'next/navigation'
+import { experimental_useOptimistic as useOptimistic } from 'react'
 import getURL from '../getUrl'
 import Tweet from '../components/Tweet'
+import useRealtime from '@/hooks/useRealtime'
 
 export default function Tweets({
     tweets,
@@ -28,36 +27,13 @@ export default function Tweets({
         return newOptimisticTweets
     })
 
-    const router = useRouter()
-
-    const supabase = createClientComponentClient()
-
     const handleDelete = async (tweet: TweetWithAuthor) => {
         await fetch(`${getURL()}/tweet/${tweet.id}`, {
             method: 'DELETE',
         })
     }
 
-    useEffect(() => {
-        const channel = supabase
-            .channel('realtime tweets')
-            .on(
-                'postgres_changes',
-                {
-                    event: '*',
-                    schema: 'public',
-                    table: 'tweets',
-                },
-                (payload) => {
-                    router.refresh()
-                }
-            )
-            .subscribe()
-
-        return () => {
-            supabase.removeChannel(channel)
-        }
-    }, [supabase, router])
+    useRealtime('realtime tweets', 'tweets');
 
     return optimisticTweets.map((tweet) => {
         return (
