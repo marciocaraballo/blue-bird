@@ -11,6 +11,7 @@ declare global {
         author: Profile
         likes: number
         user_has_liked_tweet: boolean
+        comments: number
     }
 
     type TweetCommentWithAuthor = TweetCommentDB & {
