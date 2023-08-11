@@ -1,6 +1,6 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import NewTweet from './new-tweet'
+import NewTweet from './newTweet'
 import Tweets from './tweets'
 
 export const dynamic = 'force-dynamic'
