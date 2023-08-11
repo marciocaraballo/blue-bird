@@ -15,7 +15,7 @@ export default function Tweet({
     readonly handleDelete: (tweet: TweetWithAuthor) => Promise<void>
 }) {
     return (
-        <div className="border border-gray-800 border-t-0 px-4 py-8 flex flex-1">
+        <div className="border border-gray-800 border-t-0 px-4 py-4 flex flex-1">
             <div className="h-12 w-12">
                 <Image
                     className="rounded-full"

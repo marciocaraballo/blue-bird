@@ -13,7 +13,7 @@ export default function MessageBox({
 }) {
     return (
         <form className="border border-gray-800 border-t-0" action={action}>
-            <div className="flex py-8 px-4">
+            <div className="flex py-4 px-4">
                 <div className="bg-inherit h-12 w-12">
                     <Image
                         className="rounded-full"
