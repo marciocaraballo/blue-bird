@@ -62,7 +62,7 @@ export default async function Page({
         <section>
             <Tweets tweets={[tweet]} user={session.user} />
             <NewComment user={session.user} tweetId={tweetId} />
-            <Comments comments={comments} />
+            <Comments comments={comments} user={session.user} />
         </section>
     )
 }

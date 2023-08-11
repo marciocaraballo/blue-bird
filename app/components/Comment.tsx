@@ -1,10 +1,15 @@
 import Image from 'next/image'
 import DateTime from './DateTime'
+import Delete from './Icons/Delete'
 
 export default function Comment({
     comment,
+    canDelete,
+    handleDelete,
 }: {
     readonly comment: TweetCommentWithAuthor
+    readonly canDelete?: boolean
+    readonly handleDelete: (comment: TweetCommentWithAuthor) => void
 }) {
     return (
         <div className="border border-gray-800 border-t-0 px-4 py-8 flex flex-1">
@@ -32,6 +37,16 @@ export default function Comment({
                 <p className="text-gray-400 break-all w-[400px]">
                     {comment.text}
                 </p>
+            </div>
+            <div>
+                {canDelete ? (
+                    <button
+                        className="ml-2 mt-0.5"
+                        onClick={() => handleDelete(comment)}
+                    >
+                        <Delete className="fill-gray-400 hover:fill-red-600" />
+                    </button>
+                ) : null}
             </div>
         </div>
     )

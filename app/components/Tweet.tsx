@@ -52,7 +52,7 @@ export default function Tweet({
                             className="ml-2"
                             onClick={() => handleDelete(tweet)}
                         >
-                            <Delete className="fill-gray-400 hover:fill-red-600"/>
+                            <Delete className="fill-gray-400 hover:fill-red-600" />
                         </button>
                     ) : null}
                 </div>
