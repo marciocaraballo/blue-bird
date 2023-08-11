@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Likes from '../likes'
+import Likes from '../feed/likes'
 import CommentsLink from '../commentsLink'
 
 export default function Tweet({

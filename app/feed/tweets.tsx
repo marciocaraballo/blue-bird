@@ -6,8 +6,8 @@ import {
 } from '@supabase/auth-helpers-nextjs'
 import { useEffect, experimental_useOptimistic as useOptimistic } from 'react'
 import { useRouter } from 'next/navigation'
-import getURL from './getUrl'
-import Tweet from './components/Tweet'
+import getURL from '../getUrl'
+import Tweet from '../components/Tweet'
 
 export default function Tweets({
     tweets,

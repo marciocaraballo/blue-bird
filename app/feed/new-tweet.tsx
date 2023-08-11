@@ -1,6 +1,6 @@
 import { User, createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import MessageBox from './components/MessageBox'
+import MessageBox from '../components/MessageBox'
 
 export const dynamic = 'force-dynamic'
 

@@ -2,7 +2,7 @@ import MessageBox from '@/app/components/MessageBox'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import Tweets from '@/app/tweets'
+import Tweets from '@/app/feed/tweets'
 
 export const dynamic = 'force-dynamic'
 
