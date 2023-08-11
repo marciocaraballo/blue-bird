@@ -25,21 +25,14 @@ export default function Comments({
         })
     }
 
-    return (
-        <section>
-            <div className="sticky top-[61px] bg-gray-900">
-                <StaticMessage message="Thread" />
-            </div>
-            {comments.map((comment) => {
-                return (
-                    <Comment
-                        key={comment.id}
-                        comment={comment}
-                        handleDelete={handleDelete}
-                        canDelete={user.id === comment.author.id}
-                    />
-                )
-            })}
-        </section>
-    )
+    return comments.map((comment) => {
+        return (
+            <Comment
+                key={comment.id}
+                comment={comment}
+                handleDelete={handleDelete}
+                canDelete={user.id === comment.author.id}
+            />
+        )
+    })
 }

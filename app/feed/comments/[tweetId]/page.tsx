@@ -5,6 +5,7 @@ import Tweets from '../../tweets'
 import NewComment from './newComment'
 import Comments from './comments'
 import EmptyMessage from '@/app/components/StaticMessage'
+import StaticMessage from '@/app/components/StaticMessage'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,17 +25,9 @@ export default async function Page({
 
     const { data: tweetData } = await supabase
         .from('tweets')
-        .select('*, author: profiles(*), likes(user_id), comments(tweet_id)')
+        .select('*, author: profiles(*), likes(user_id), comments(*)')
         .eq('id', tweetId)
         .single()
-
-    const { data: commentsData } = await supabase
-        .from('comments')
-        .select('*')
-        .eq('tweet_id', tweetId)
-        .order('created_at', {
-            ascending: false,
-        })
 
     if (tweetData === null) return <EmptyMessage message="Tweet not found" />
 
@@ -51,7 +44,7 @@ export default async function Page({
     }
 
     const comments: TweetCommentWithAuthor[] =
-        commentsData?.map((comment) => ({
+        tweetData.comments.map((comment) => ({
             ...comment,
             author: Array.isArray(tweetData.author)
                 ? tweetData.author[0]
@@ -62,6 +55,11 @@ export default async function Page({
         <section>
             <Tweets tweets={[tweet]} user={session.user} />
             <NewComment user={session.user} tweetId={tweetId} />
+            {comments === null || comments?.length === 0 ? null : (
+                <div className="sticky top-[61px] bg-gray-900">
+                    <StaticMessage message="Thread" />
+                </div>
+            )}
             <Comments comments={comments} user={session.user} />
         </section>
     )
