@@ -49,7 +49,6 @@ export default function Tweets({
                     table: 'tweets',
                 },
                 (payload) => {
-                    console.log('updating')
                     router.refresh()
                 }
             )

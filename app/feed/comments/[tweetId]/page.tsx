@@ -1,8 +1,9 @@
-import MessageBox from '@/app/components/MessageBox'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import Tweets from '@/app/feed/tweets'
+import Tweets from '../../tweets'
+import NewComment from './newComment'
+import Comments from './comments'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,31 +21,45 @@ export default async function Page({
         redirect('/login')
     }
 
-    const { data } = await supabase
+    const { data: tweetData } = await supabase
         .from('tweets')
         .select('*, author: profiles(*), likes(user_id), comments(user_id)')
         .eq('id', tweetId)
         .single()
 
-    if (data === null) return <p>Tweet not found</p>
+    const { data: commentsData } = await supabase
+        .from('comments')
+        .select('*')
+        .eq('tweet_id', tweetId)
+
+    console.log(commentsData)
+
+    if (tweetData === null) return <p>Tweet not found</p>
 
     const tweet: TweetWithAuthor = {
-        ...data,
-        author: Array.isArray(data.author) ? data.author[0] : data.author,
-        user_has_liked_tweet: !!data.likes.find(
+        ...tweetData,
+        author: Array.isArray(tweetData.author)
+            ? tweetData.author[0]
+            : tweetData.author,
+        user_has_liked_tweet: !!tweetData.likes.find(
             (like) => like.user_id === session.user.id
         ),
-        likes: data.likes.length,
+        likes: tweetData.likes.length,
     }
+
+    const comments: TweetCommentWithAuthor[] =
+        commentsData?.map((comment) => ({
+            ...comment,
+            author: Array.isArray(tweetData.author)
+                ? tweetData.author[0]
+                : tweetData.author,
+        })) ?? []
 
     return (
         <section>
             <Tweets tweets={[tweet]} user={session.user} />
-            <MessageBox
-                name="comment"
-                placeholder="Say something!"
-                avatarUrl={session.user.user_metadata.avatar_url}
-            />
+            <Comments comments={comments} />
+            <NewComment user={session.user} tweetId={tweetId} />
         </section>
     )
 }

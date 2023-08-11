@@ -2,6 +2,7 @@ import { Database as DB } from '@/lib/database.types'
 
 type Tweet = DB['public']['Tables']['tweets']['Row']
 type Profile = DB['public']['Tables']['profiles']['Row']
+type TweetCommentDB = DB['public']['Tables']['comments']['Row']
 
 declare global {
     type Database = DB
@@ -10,5 +11,9 @@ declare global {
         author: Profile
         likes: number
         user_has_liked_tweet: boolean
+    }
+
+    type TweetCommentWithAuthor = TweetCommentDB & {
+        author: Profile
     }
 }

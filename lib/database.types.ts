@@ -9,6 +9,43 @@ export type Json =
 export interface Database {
     public: {
         Tables: {
+            comments: {
+                Row: {
+                    created_at: string
+                    id: number
+                    text: string
+                    tweet_id: string
+                    user_id: string
+                }
+                Insert: {
+                    created_at?: string
+                    id?: number
+                    text: string
+                    tweet_id: string
+                    user_id: string
+                }
+                Update: {
+                    created_at?: string
+                    id?: number
+                    text?: string
+                    tweet_id?: string
+                    user_id?: string
+                }
+                Relationships: [
+                    {
+                        foreignKeyName: 'comments_tweet_id_fkey'
+                        columns: ['tweet_id']
+                        referencedRelation: 'tweets'
+                        referencedColumns: ['id']
+                    },
+                    {
+                        foreignKeyName: 'comments_user_id_fkey'
+                        columns: ['user_id']
+                        referencedRelation: 'profiles'
+                        referencedColumns: ['id']
+                    },
+                ]
+            }
             likes: {
                 Row: {
                     created_at: string
