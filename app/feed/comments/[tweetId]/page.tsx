@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import Tweets from '../../tweets'
 import NewComment from './newComment'
 import Comments from './comments'
+import EmptyMessage from '@/app/components/EmptyMessage'
 
 export const dynamic = 'force-dynamic'
 
@@ -31,8 +32,11 @@ export default async function Page({
         .from('comments')
         .select('*')
         .eq('tweet_id', tweetId)
+        .order('created_at', {
+            ascending: false,
+        })
 
-    if (tweetData === null) return <p>Tweet not found</p>
+    if (tweetData === null) return (<EmptyMessage message="Tweet not found"/>)
 
     const tweet: TweetWithAuthor = {
         ...tweetData,
