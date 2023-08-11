@@ -30,7 +30,7 @@ export default async function Home() {
                 (like) => like.user_id === session.user.id
             ),
             likes: tweet.likes.length,
-            comments: tweet.comments.length
+            comments: tweet.comments.length,
         })) ?? []
 
     return (
